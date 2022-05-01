@@ -1,4 +1,3 @@
-// const d = new Date();
 
 // const dict = {'1970-01-01':4,'2020-01-02':4,'2020-01-03':6,'2020-01-04':8,'2020-01-05':2,'2020-01-06':-6,'2020-01-07':2,'2020-01-08':-2}
 const dict = { '2020-01-01': 6, '2020-01-04': 12, '2020-01-05': 14, '2020-01-06': 2, '2020-01-08': 4 }
@@ -17,14 +16,13 @@ const Solution = (dict) => {
         else {
             result[days[day]] = dict[date];
         }
-        // console.log(days[day]);
     }
 
     days.map((day, idx) => {
         if (result[day] === null) {
             let next = (idx + 1) % 7;
             let prev = (idx + 6) % 7;
-            // console.log(next,prev);
+       
             if (result[days[next]] != null && result[days[prev]] != null) {
                 result[day] = Math.floor((result[days[next]] + result[days[prev]]) / 2);
             }
@@ -41,7 +39,6 @@ const Solution = (dict) => {
                 // Arithmetic Progression Logic
                 let diff = Math.abs(next - prev);
                 let d = (result[days[next]] - result[days[prev]]) / diff;
-                // console.log(diff, d, result[days[next]], result[days[prev]]);
                 let val = result[days[prev]] + Math.floor((Math.abs(idx - prev)) * d);
                 result[day] = val;
             }
@@ -51,8 +48,4 @@ const Solution = (dict) => {
 }
 
 const output = Solution(dict);
-// document.getElementById("input").innerHTML =  JSON.stringify(dict);
-// document.getElementById("output").innerHTML =  JSON.stringify(output);
 console.log(output);
-// const dt = new Date('2020-01-01');
-// console.log(dt.getDay());
